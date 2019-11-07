@@ -1,10 +1,37 @@
 
 #include <iostream>
 
+/*
+ * Assignment 3 Part 1
+ * 
+ * This program sets up an array and sorts it. It also features a 
+ * recursive method to test our skills using C++.
+ * 
+ * Completion time: 3 hours
+ *
+ * @author James Fijewski
+ * @version 1.0
+ */
+
 using namespace std;
 
-void initializeArray(int* array, int length)
-{
+/*
+ * Creates an array of a size length and adds zeros to odd positions and 
+ * 5's in the even positions. 
+ * @parma array The array pointer to pass in
+ * @parma length The length of the array being passed in
+ */
+void initializeArray(int* array, int length) {
+        for (int i = 0; i < length; i++) {
+
+        // If it is an even position add a 5
+        if (i % 2 == 0) {
+            *(array + i) = 5;
+        }            // Otherwise add a zero
+        else {
+            *(array + i) = 0;
+        }
+    }
 }
 
 void printArray(int* array, int length)
