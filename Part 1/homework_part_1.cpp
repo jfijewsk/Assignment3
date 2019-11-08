@@ -34,8 +34,19 @@ void initializeArray(int* array, int length) {
     }
 }
 
-void printArray(int* array, int length)
-{
+/*
+ * Loops through the array and prints each int out to console.
+ * @parma array The array pointer to pass in
+ * @parma length The length of the array being passed in
+ */
+void printArray(int* array, int length) {
+        for (int i = 0; i < length; i++) {
+        cout << *(array + i);
+        cout << (", ");
+    }
+
+    // Add a new line after printing to make it look better
+    cout << ("\n");
 }
 
 void insertionSort(int* array, int length)
