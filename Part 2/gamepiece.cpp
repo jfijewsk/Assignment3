@@ -1,19 +1,16 @@
 #include "gamepiece.h"
 
-GamePiece::GamePiece()
-{
+GamePiece::GamePiece() {
+    strcpy(this->label, "---", 30);
 }
 
-GamePiece::GamePiece(char* newLabel)
-{
+GamePiece::GamePiece(char* newLabel) {
 }
 
-char* GamePiece::getLabel()
-{
+char* GamePiece::getLabel() {
     return "";
 }
 
-char* GamePiece::toString()
-{
+char* GamePiece::toString() {
     return "";
 }
