@@ -7,7 +7,7 @@
  * This program sets up an array and sorts it. It also features a 
  * recursive method to test our skills using C++.
  * 
- * Completion time: 3 hours
+ * Completion time: 2 hours
  *
  * @author James Fijewski
  * @version 1.0
@@ -49,6 +49,11 @@ void printArray(int* array, int length) {
     cout << ("\n");
 }
 
+/*
+ * Sorts the array in descending order.
+ * @parma array The array pointer to pass in
+ * @parma length The length of the array being passed in
+*/
 void insertionSort(int* array, int length) {
         for (int i = 1; i < length; i++) {
         int key = *(array + i);
@@ -63,9 +68,19 @@ void insertionSort(int* array, int length) {
     }
 }
 
-int factorial(int num)
-{
-    return 0;
+/*
+ * Recursive method to give the factorial value of a number
+ * @parma num The number to be factorial
+ * @returns the factorial of that number
+*/
+int factorial(int num) {
+        // Termination statement
+    if (num == 1) {
+        return 1;
+    }
+    else {
+        return num * factorial(num - 1);
+    }
 }
 
 int main()
