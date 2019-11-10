@@ -16,7 +16,6 @@ using namespace std;
  * @version 1.0
  */
 
-
 /*
  * Function for setting up the game board
  * @parma game_board game board to set up
@@ -26,12 +25,12 @@ using namespace std;
 GameBoard::GameBoard(int rows, int cols) {
     this->rows = rows;
     this->cols = cols;
-    
+
     board = new GamePiece*[rows];
-    
+
     // Loop through the board and assign columns to the rows and add 
     // empty game pieces in those positions.
-    for(int i = 0; i < rows; i++){
+    for (int i = 0; i < rows; i++) {
         board[i] = new GamePiece[cols];
     }
 }
@@ -44,7 +43,7 @@ GameBoard::GameBoard(int rows, int cols) {
  * @return returns true if valid, false if invalid
  */
 bool GameBoard::isSpaceValid(int row, int col) {
-        // Check if the row value is valid
+    // Check if the row value is valid
     if (row >= 0 && row <= this->rows) {
 
         // Check if column value is valid
@@ -64,17 +63,16 @@ bool GameBoard::isSpaceValid(int row, int col) {
  * @parma col location of the column to add the piece on
  * @return returns true if added, false if not added
  */
-bool GameBoard::addPiece(GamePiece piece, int row, int col) 
-{
+bool GameBoard::addPiece(GamePiece piece, int row, int col) {
     // Check to see if the location is a valid location
     if (isSpaceValid(row, col)) {
 
         // Check if the location is empty
         if (strncmp(board[row][col].getLabel(), "---", 3) == 0) {
 
-            // Move the piece into the location
+            // Add the piece into the location
             board[row][col] = piece;
-            
+
             return true;
         }
 
@@ -83,21 +81,46 @@ bool GameBoard::addPiece(GamePiece piece, int row, int col)
     return false;
 }
 
-bool GameBoard::movePiece(int srcRow, int srcCol, int destRow, int destCol)
-{
+/*
+ * Moves pre-existing game piece on the board
+ * @parma srcRow location of the row the piece to be moved is on 
+ * @parma srcCol location of the column the piece to be moved is on \
+ * @parma destRow location of the row the piece to be moved is going
+ * @parma destCol location of the column the piece to be moved is going
+ * @return returns true if moved, false if not moved
+ */
+bool GameBoard::movePiece(int srcRow, int srcCol, int destRow, int destCol) {
+
+    // Check for valid locations
+    if (isSpaceValid(srcRow, srcCol) && isSpaceValid(destRow, destCol)) {
+
+        // Only move the piece if there is not another piece at that location
+        if (strncmp(board[destRow][destCol].getLabel(), "---", 3) == 0) {
+
+            GamePiece empty;
+            board[destRow][destCol] = board[srcRow][srcCol];
+            board[srcRow][srcCol] = empty;
+
+            return true;
+        }
+    }
+
     return false;
 }
 
+/*
+ * Prints the game board out
+ */
 void GameBoard::print() {
-    
+
     // Print the game board header
     printf("The GameBoard \n----------------------\n");
-    
-    // Loop through and print all pieces
+
+    // Loop through and print all pieces and print
     for (int i = 0; i < this->rows; i++) {
         for (int j = 0; j < this->cols; j++) {
-            cout<<board[i][j].toString();
+            cout << board[i][j].toString() << " ";
         }
-        cout<<"\n";
+        cout << "\n";
     }
 }

@@ -49,22 +49,23 @@ char* GamePiece::getLabel() {
 char* GamePiece::toString() {
     int stringLength = strlen(this->label);
     char* result = this->label;
-    
+
     // Make sure label is only 3 char long
     if (stringLength > 3) {
-         result[3] = '\0';
-         
+        // Add string terminator
+        result[3] = '\0';
+
     }
 
     // Make sure label not not shorter than 3 char
-    if(stringLength < 3){
+    if (stringLength < 3) {
         for (int i = stringLength; i < 3; i++) {
             result[i] = ' ';
         }
-        
+
         // Add string terminator
-        result[3]= '\0';
+        result[3] = '\0';
     }
-    
+
     return result;
 }
