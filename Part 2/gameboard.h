@@ -17,6 +17,9 @@
 
 class GameBoard
 {
+    private:
+        GamePiece** board;
+        int rows, cols;
     public:
         GameBoard(int rows, int cols);
 

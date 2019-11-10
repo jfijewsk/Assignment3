@@ -1,5 +1,6 @@
 #include "gamepiece.h"
 #include <string.h>
+#include <iostream>
 
 /*
  * Assignment 3 - Part 2
@@ -60,6 +61,6 @@ char* GamePiece::toString() {
             result[i] = ' ';
         }
     }
-
+    
     return result;
 }
