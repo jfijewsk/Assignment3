@@ -62,5 +62,5 @@ char* GamePiece::toString() {
         }
     }
     
-    return result;
+    return this->label;
 }

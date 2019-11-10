@@ -88,6 +88,16 @@ bool GameBoard::movePiece(int srcRow, int srcCol, int destRow, int destCol)
     return false;
 }
 
-void GameBoard::print()
-{
+void GameBoard::print() {
+    
+    // Print the game board header
+    printf("The GameBoard \n----------------------\n");
+    
+    // Loop through and print all pieces
+    for (int i = 0; i < this->rows; i++) {
+        for (int j = 0; j < this->cols; j++) {
+            cout<<board[i][j].toString();
+        }
+        cout<<"\n";
+    }
 }
